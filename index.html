@@ -1,283 +1,574 @@
-承知いたしました。ヘッダーの画像、サイトタイトルの「Pocket Penguin」、ナビゲーションメニュー、そして今回復元した楽曲リストを含む**ページ全体**の構成を、アーカイブのソースコードをベースに現代的に整えたコードとして再構築しました。
-
-以前のサイトの雰囲気（シンプルでクリーンなデザイン）を維持しつつ、レスポンシブ対応（スマホ対応）も組み込んでいます。
-
-```html
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edition – Pocket Penguin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Penguin | Melodica & Guitar Duo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Base Setup --- */
         :root {
-            --text-color: #333;
-            --light-text: #666;
-            --accent-color: #0066cc;
-            --border-color: #eee;
-            --max-width: 1000px;
+            --bg-color: #ffffff;
+            --text-color: #2d3436;
+            --accent-color: #ff9f43;
+            --sub-color: #2f3640;
+            --light-gray: #f9f9f9;
         }
-
         body {
-            font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0; padding: 0; color: var(--text-color); line-height: 1.8;
+            scroll-behavior: smooth;
         }
+        header {
+            background: var(--sub-color); color: white;
+            padding: 100px 20px; text-align: center;
+        }
+        .logo { font-size: 2.5rem; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+        
+        .nav-container {
+            background: white; position: sticky; top: 0; 
+            border-bottom: 1px solid #eee; z-index: 1000; padding: 10px 0;
+        }
+        nav { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
+        nav a { margin: 5px 15px; text-decoration: none; color: var(--sub-color); font-weight: 500; font-size: 0.9rem; }
+        nav a:hover { color: var(--accent-color); }
 
-        .wrap {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        section { max-width: 900px; margin: 60px auto; padding: 40px 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 1.8rem; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
 
-        /* --- Header Section --- */
-        .site-header {
-            background-color: #fafafa;
-        }
-
-        .custom-header-media {
-            height: 300px;
-            overflow: hidden;
-            background: #222;
-        }
-
-        .custom-header-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .site-branding {
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .site-title {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .site-title a {
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-
-        .site-description {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-        }
-
-        /* --- Navigation --- */
-        .navigation-top {
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 0;
-            margin-bottom: 60px;
-        }
-
-        .main-navigation ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .main-navigation li {
-            margin: 0 20px;
-        }
-
-        .main-navigation a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* --- Content Section --- */
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .edition-intro {
-            margin-bottom: 50px;
-            color: var(--light-text);
-        }
-
-        .edition-category {
-            margin-bottom: 60px;
-        }
-
-        .edition-category h3 {
-            font-size: 1.3rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        .edition-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .edition-list li {
-            margin-bottom: 40px;
-        }
-
-        .work-title {
-            font-weight: bold;
-            font-size: 1.15rem;
-        }
-
-        .work-details {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-top: 5px;
-        }
-
-        .ex-link {
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-left: 10px;
-            border: 1px solid var(--accent-color);
-            padding: 2px 6px;
-            border-radius: 3px;
-            transition: all 0.2s ease;
-        }
-
-        .ex-link:hover {
-            background: var(--accent-color);
-            color: #fff;
-        }
-
-        /* --- Footer --- */
-        footer {
-            margin-top: 100px;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--light-text);
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 600px) {
-            .custom-header-media { height: 150px; }
-            .site-title { font-size: 1.8rem; }
-            .main-navigation ul { flex-direction: column; align-items: center; }
-            .main-navigation li { margin: 5px 0; }
-        }
+        .bio-block { margin-bottom: 50px; }
+        .bio-text { margin-bottom: 30px; white-space: pre-wrap; }
+        .profile-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .profile-item h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; color: var(--sub-color); }
+        
+        footer { background: var(--sub-color); color: white; text-align: center; padding: 40px 20px; margin-top: 80px; }
+        .contact-btn { display: inline-block; padding: 12px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="custom-header-media">
-            <img src="https://web.archive.org/web/20240812030834im_/http://pocketpenguin.net/wordpress/wp-content/uploads/2017/11/penguin-top2.jpg" alt="Header Image">
+<header>
+    <div class="logo">Pocket Penguin</div>
+    <p class="subtitle">An instrumental duo run by Ayumi Toyama & Ryusuke Koarashi.</p>
+</header>
+
+<div class="nav-container">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#media">Media</a>
+        <a href="#discography">Discography</a>
+        <a href="#repertoire">Repertoire</a>
+        <a href="#concert">Concert</a>
+        <a href="#edition">Edition</a>
+        <a href="#store">Store</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</div>
+
+<section id="about">
+    <div class="section-title"><h2>About</h2></div>
+    
+    <div class="bio-block">
+        <div class="bio-text" style="font-style: italic; color: #555; border-bottom: 1px solid #eee; padding-bottom: 30px;">
+            Pocket Penguin is an instrumental duo established by Ayumi Toyama and Ryusuke Koarashi in 2011. Pocket Penguin has been mainly focusing on exploring possibility of combination of two intimate instruments—melodica & guitar—by both composing and adapting various music from all over the world. They have had performances in UK, Japan, Italy, Azerbaijan, and Turkey until now. The 1st album “A Bird Flying over Mountains” was released in March 2012, and the 2nd album “Prelude” was released in May 2013. They founded London melodica ensemble in 2013 and have been developing a number of repertoire for the ensemble.
         </div>
-
-        <div class="site-branding">
-            <div class="wrap">
-                <h1 class="site-title"><a href="/">Pocket Penguin</a></h1>
-                <p class="site-description">mostly melodica &amp; guitar</p>
-            </div>
+        <div class="bio-text" style="padding-top: 10px;">
+            Pocket Penguin (ポケットペンギン) とは、遠山麻友美と小嵐龍輔の２人で、ロンドンを拠点に活動しているインストゥルメンタルデュオです。鍵盤ハーモニカとギターという組み合わせで現代世界の様々な音楽を取り上げると同時に、過去の作品の異なった解釈の可能性を探求します。現在までに、イギリスをはじめ、日本、アゼルバイジャン、トルコ等で演奏しました。2012年にファーストアルバム、”A Bird Flying over Mountains“が、2013年にセカンドアルバム”Prelude“がリリースされています。
         </div>
-
-        <div class="navigation-top">
-            <div class="wrap">
-                <nav class="main-navigation">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about/">About</a></li>
-                        <li><a href="/edition/">Edition</a></li>
-                        <li><a href="/contact/">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <div class="wrap">
-        <main>
-            <section id="edition">
-                <h2>Edition</h2>
-                <div class="edition-intro">
-                    <p>Sheet music arranged by Ryusuke Koarashi is available for purchase at <strong>Gumroad</strong> and <strong>同人音楽の森 (dojinongaku.com)</strong>.</p>
-                </div>
-
-                <div class="edition-category">
-                    <h3>Melodica & Guitar</h3>
-                    <ul class="edition-list">
-                        <li>
-                            <span class="work-title">First Noel</span> 
-                            <a href="https://gumroad.com/l/firstnoel" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Traditional English Carol / Arr. Ryusuke Koarashi</span>
-                        </li>
-                        <li>
-                            <span class="work-title">Amachan Opening Theme</span> 
-                            <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14112" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Composed by Yoshihide Otomo / Arr. Ryusuke Koarashi</span>
-                        </li>
-                        <li>
-                            <span class="work-title">Oshin Opening Theme</span> 
-                            <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14111" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Composed by Koichi Sakata / Arr. Ryusuke Koarashi</span>
-                        </li>
-                        <li>
-                            <span class="work-title">We Wish You a Merry Christmas</span> 
-                            <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14110" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Composed by Koichi Sakata / Arr. Ryusuke Koarashi</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="edition-category">
-                    <h3>Melodica Ensemble</h3>
-                    <ul class="edition-list">
-                        <li>
-                            <span class="work-title">Carol of the Bells / Shchedryk</span> 
-                            <a href="https://gumroad.com/l/carolofthebells" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Composed by Mykola Leontovych / Transc. Ryusuke Koarashi</span>
-                        </li>
-                        <li>
-                            <span class="work-title">The Merry-Go-Round-of-Life</span> 
-                            <a href="https://gumroad.com/l/merrygoround" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Theme Song from ‘Howl’s Moving Castle’<br>
-                            Composed by Joe Hisaishi / Arr. Ryusuke Koarashi</span>
-                        </li>
-                        <li>
-                            <span class="work-title">Carrying You</span> 
-                            <a href="https://gumroad.com/l/carryingyou" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
-                            <span class="work-details">Theme Song from ‘Castle in the Sky’<br>
-                            Composed by Joe Hisaishi / Arr. Ryusuke Koarashi</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
     </div>
 
-    <footer>
-        <div class="wrap">
-            <p>&copy; Pocket Penguin - Ryusuke Koarashi</p>
+    <div class="section-title"><h3>Profile</h3></div>
+    <div class="profile-container">
+        <div class="profile-item">
+            <h3>遠山麻友美 Ayumi Toyama</h3>
+            <p><strong>(melodica/piano)</strong></p>
+            <p>Born in Nagoya, Japan, into a musical family, she began learning classical piano at the age of 4.  She graduated from University of Colorado, Boulder in the U.S and now based on London as piano teacher, accompanist and melodica player. Her piano teachers include Naoshiro Kato, Mioko Kato and Piero Quaglia.</p>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 15px;">鍵盤ハーモニカ奏者、ピアニスト。University of Colorado, Boulder卒。ピアノを小津恒子、川口敦子、加藤直四朗、加藤美緒子、Piero Quagliaらの各氏に師事。ピアノ指導者、伴奏者としても活動も行っている。</p>
         </div>
-    </footer>
+        <div class="profile-item">
+            <h3>小嵐龍輔 Ryusuke Koarashi</h3>
+            <p><strong>(guitar/comp./arr.)</strong></p>
+            <p>Guitarist, and composer. Ryusuke studied at the Guildhall school of music and drama in London. His guitar teachers include Keigo Fujii, Robert Brightmore. His composition teachers include Paul Newland. He made more than 300 arrangements/compositions for melodica & guitar duo during 2011-2013.</p>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 15px;">ギター、ウクレレ、作編曲。Guildhall School of Music and Drama卒。ギターを藤井敬吾氏、Robert Brightmore氏等に、作曲をPaul Newland氏らと学んだ。作品「蛍」「雨の下に」が現代音楽グループ、ラウト、オケアノスに委嘱されロンドンにて初演された。2011年〜2013年の間には300曲以上を鍵盤ハーモニカ＆ギターの組み合わせのために作編曲した。</p>
+        </div>
+    </div>
+</section>
 
-</body>
-</html>
-```
+<section id="media"><div class="section-title"><h2>Media</h2></div><p style="text-align:center;">Videos / Audio</p></section>
+<section id="discography"><div class="section-title"><h2>Discography</h2></div><p style="text-align:center;">Albums</p></section>
+
+<section id="repertoire">
+    <div class="section-title"><h2>Repertoire</h2></div>
+    
+    <div class="repertoire-content" style="max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.6; text-align: left; background: #fff; padding: 20px; border: 1px solid #eee;">
+        <p style="margin-bottom: 20px;">—the list of repertoires that we have played in public.</p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px;">Melodica + Guitar</h3>
+        
+        <p><strong>Amirov, Fikret</strong><br>Two pieces on Azerbaijan Folk Themes</p>
+        
+        <p><strong>Bach, J.S.</strong><br>Cello Suite III<br>
+        -Prelude<br>
+        -Allemande<br>
+        -Courante<br>
+        -Sarabande<br>
+        -Bourré<br>
+        -Gigue<br>
+        Jesus Bleibet Meine Freude (from BWV147)</p>
+        
+        <p><strong>Bartok, Bela</strong><br>Three Hungarian Folksongs from Csik<br>
+        Rumanian Folk Dances<br>
+        Romanian Christmas Carols Series I<br>
+        Romanian Christmas Carols Series II<br>
+        Sonatina on Themes from Transylvania</p>
+        
+        <p><strong>Bulgarian Folk Dance</strong><br>Kopanitsa</p>
+        
+        <p><strong>Bulgarian Folk Songs</strong><br>A Bre Bati Kolyo<br>
+        Bre Petrunko<br>Dilmano, Dilbero<br>
+        Dragana y Slaveya<br>
+        Polegnala e Todora<br>
+        Radi na Radka Dumashe<br>
+        Vecheryai Rado<br>
+        Vido, Vido, Byala Vido</p>
+        
+        <p><strong>Catalan Folk Song</strong><br>El Noy De La Mare<br>
+        La Nit De Nadal<br>
+        La Filadora</p>
+        
+        <p><strong>Debussy, Claude</strong><br>La fille aux cheveux de lin</p>
+        
+        <p><strong>Dowland, John</strong><br>A Piece without Title<br>
+        Forlorn Hope Fancy<br>
+        The Frog Galliard</p>
+        
+        <p><strong>English Christmas Carol</strong><br>The First Nöel<br>
+        We Wish You A Merry Christmas</p>
+        
+        <p><strong>Folk Song</strong><br>Sari Gelin</p>
+        
+        <p><strong>Hajibeyov, Niyazi</strong><br>Music fragments from the film “Almas”</p>
+        
+        <p><strong>Hajibeyov, Uzeyir</strong><br>Jangi</p>
+        
+        <p><strong>Handel, Frederic George</strong><br>Ombra Mai Fu</p>
+        
+        <p><strong>Irish Traditional</strong><br>Medley (The Road to Lisdoonvarna, The Swallowtail Jig and The Swallowtail Reel)<br>
+        Londonderry Air</p>
+        
+        <p><strong>Khachaturian, Aram</strong><br>(From Children’s Album)<br>
+        A Little Song<br>
+        Scherzo<br>
+        Skipping Rope<br>
+        Eastern Dance<br>
+        Two Funny Aunties Argued<br>
+        My Friend is Unwell</p>
+        
+        <p><strong>Kreisler, Friz</strong><br>Liebesleid<br>
+        Liebesfreud<br>
+        Schön Rosmarin</p>
+        
+        <p><strong>Mirzaev, Musa</strong><br>6 pieces on material of Azerbaijan Folklore<br>
+        1.Lyrical Piece<br>
+        2.First Dance<br>
+        3.Second Dance<br>
+        4.Third Dance<br>
+        5.Fourth Dance<br>
+        6.Fifth Dance</p>
+        
+        <p><strong>Miyagi, Michio</strong><br>Haru no Umi</p>
+        
+        <p><strong>Mompou, Federico</strong><br>Cancion y Danza VIII</p>
+        
+        <p><strong>Monti, Vittorio</strong><br>Csárdás</p>
+        
+        <p><strong>Morricone, Ennio & Andrea</strong><br>Cinema Paradiso Medley</p>
+        
+        <p><strong>Mozart, W.A.</strong><br>Piano Sonata in A, K331</p>
+        
+        <p><strong>Polish Dance</strong><br>Clarinet Polka</p>
+        
+        <p><strong>Qarayev, Qara</strong><br>Prelude 2<br>
+        Eskiz</p>
+        
+        <p><strong>Saygun, Ahmet Adnan</strong><br>Inci’nin Kitabı (inci’s book)<br>
+        1.Inci<br>
+        2.Afcan Kedi<br>
+        3.Masal<br>
+        4.Kocaman Bebek<br>
+        5.Oyun<br>
+        6.Ninni<br>
+        7.Rüya</p>
+        
+        <p><strong>Satie, Erik</strong><br>Sonatine Breucratique<br>
+        Cinema</p>
+        
+        <p><strong>Sor, Fernando</strong><br>Souvenir de Russie</p>
+        
+        <p><strong>Şatıroğlu, Veysel (Aşık Veysel)</strong><br>Kara Toprak<br>
+        Uzun Ince Bir Yordayım</p>
+        
+        <p><strong>Koarashi, Ryusuke</strong><br>A Bird Flying over Mountains<br>
+        Crippled Jig<br>
+        Çok Güzeller<br>
+        Foreign Hill<br>
+        Fragments of Dreams<br>
+        Walking through a Forest</p>
+        
+        <p><strong>Koarashi & Toyama</strong><br>Prelude I<br>
+        Prelude II<br>
+        Prelude III<br>
+        Prelude IV<br>
+        Prelude V</p>
+        
+        <p><strong>Webern, Anton</strong><br>Kinderstück</p>
+        
+        <p><strong>Yatsuhashi, Kengyo</strong><br>Rokudan no Shirabe</p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px;">Piano + Guitar</h3>
+        
+        <p><strong>Carulli, Ferdinando/Gustavo</strong><br>Duo in D major op.134<br>
+        Duo in G major op.151</p>
+        
+        <p><strong>Castelnuovo-Tedesco, Mario</strong><br>Guitar Concierto in D, op.99</p>
+        
+        <p><strong>Fujii, Keigo</strong><br>Variations on the theme of Shabondama</p>
+        
+        <p><strong>Koarashi, Ryusuke</strong><br>Hotaru</p>
+        
+        <p><strong>Molino Francesco</strong><br>Nocturne No.1 op.36<br>
+        Nocturne No.2 op.44</p>
+        
+        <p><strong>Stevens, Bernard</strong><br>Autumn Sequence</p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px;">Voice + Melodica + Guitar</h3>
+        
+        <p><strong>Dowland, John</strong><br>Come Again<br>
+        Fine Knacks for Ladies</p>
+        
+        <p><strong>Gershwin, George</strong><br>Foggy Day<br>
+        I Got a Rhythm<br>
+        Summertime</p>
+        
+        <p><strong>Granados, Enrique</strong><br>El Majo Timido<br>
+        El Mirar de la Maja<br>
+        Amor y Odio<br>
+        El Majo Discreto</p>
+        
+        <p><strong>Falla, Manuel de</strong><br>7 Canciones populares Españolas<br>
+        El paño moruno<br>
+        Seguidilla murciana<br>
+        Asturiana<br>
+        Jota<br>
+        Nana<br>
+        Canción<br>
+        Polo</p>
+        
+        <p><strong>Rodrigo, Joaquin</strong><br>De los alamos vengo, madre</p>
+        
+        <p><strong>Scarlatti, Alessandro</strong><br>Se Florindo e Fedele</p>
+        
+        <p><strong>Stravinsky, Igor</strong><br>Pastrale</p>
+        
+        <p><strong>Montsalvatge, Xavier</strong><br>Cuba on a Keyboard<br>
+        Punto De Habanera</p>
+    </div>
+</section>
+
+<section id="concert">
+    <div class="section-title"><h2>Concert</h2></div>
+    
+    <div class="concert-full-archive" style="max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; text-align: left;">
+        
+        <div style="white-space: pre-wrap; background: #fff; padding: 20px; border: 1px solid #eee;">
+Past Concerts
+<a href="#year-2019">2019</a> | <a href="#year-2017">2017</a> | <a href="#year-2016">2016</a> | <a href="#year-2015">2015</a> | <a href="#year-2014">2014</a> | <a href="#year-2013">2013</a> | <a href="#year-2012">2012</a> | <a href="#year-2011">2011</a>
+
+<strong id="year-2019">Past Concerts in 2019</strong>
+
+<strong>Music for A While</strong>
+Date: 12th May (Sun）
+Time: 19:30-21.15
+Venue: East Finchley Methodist Church
+High Rd., London N2 8AJ (opp.Creighton Ave)
+Admission: Free Collection in aid of Noah’s Ark Children’s Hospice
+<a href="http://blog.pocketpenguin.net/2019/06/15/music-for-a-while-12th-may-2019/" target="_blank">Blog Article</a> | <a href="http://ja.pocketpenguin.net/2019/06/15/music-for-a-while-12th-may-2019/" target="_blank">ブログ記事</a>
+
+<strong>Pocket Penguin(s) Concert 2</strong>
+Date: 14th Feb (THU), 2019
+Time: 13:30-15.00
+Venue: AGE UK, East Finchley
+<a href="http://blog.pocketpenguin.net/2019/02/15/pocket-penguins-concert-2-14th-feb-2019/" target="_blank">Blog Article</a> | <a href="http://ja.pocketpenguin.net/2019/02/15/pocket-penguins-concert-2-14th-feb-2019/" target="_blank">ブログ記事</a>
+
+<strong>Pocket Penguin(s) Concert</strong>
+Date: 9th Feb (Sat), 2019
+Time: 18:30-20.30
+Venue: St Mary Church at Finchley
+Hendon Lane, London N3 1TR
+<a href="http://blog.pocketpenguin.net/2019/02/11/pocket-penguins-concert-9th-feb-2019/" target="_blank">Blog Article</a> | <a href="http://ja.pocketpenguin.net/2019/02/11/pocket-penguins-concert-9th-feb-2019/" target="_blank">ブログ記事</a>
+
+<strong id="year-2017">Past Concerts in 2017</strong>
+
+<strong>Melodica Club Concert</strong>
+Date: 13th Aug (Sun)
+Time: 2:00pm-
+Venue: Hawraman Café Bar
+38 Chalk Farm Road NW1 8AJ
+
+<strong id="year-2016">Past Concerts in 2016</strong>
+
+<strong>Sunday Afternoon Concert (by Melodica Club)</strong>
+Date: 30th Oct (SUN)
+Time: 3pm-
+Venue: Emporium Tea Room
+818 High Road London, N12 9QY
+
+<strong>Private Party</strong>
+Date: 13th Aug (SAT)
+Time: 7pm (Food served from 8pm)
+Venue: St Antony’s Club
+13 Upton Avenue, Forest Gate,
+
+            <strong>Sunday Afternoon Concert (by Melodica Club)</strong>
+Date: 12th JUN (SUN)
+Time: 15:30-16:30
+Venue: Emporium Tea Room
+818 High Road London, N12 9QY
+
+<strong>Past Concerts in 2015</strong>
+
+<strong>Melodica Club Concert</strong>
+Date: 17th May (Sun)
+Time: 2:00pm-4:00pm
+Venue: Holy Trinity East Finchley Church
+77 Church Ln, London N2 0TH
+
+<strong>Past Concerts in 2014</strong>
+
+<strong>Allobu Christmas Concert</strong>
+Date: 23rd Dec (Tue)
+Time: 2:00pm-4:00pm
+Venue: Obu Bunka Koryu no Mori, allobu
+150-1-6, Hiiragiyama-cho, Obu, Aichi 474-0053
+Blog Article | ブログ記事
+
+<strong>Charity Concert</strong>
+Date: 22nd Dec (Mon)
+Time: 2:00pm-2:30pm
+Venue: Aichi Children’s Health and Medical Centre
+1-2 Osakada, Moriokamachi, Obu, Aichi 474-0031
+Blog Article | ブログ記事
+
+<strong>Melodica & Guitar Concert</strong>
+Date:6th Dec (SAT)
+Time:7pm – 9pm
+Venue: Holy Trinity Church 91 Church Lane, East Finchley N2 0TH
+
+<strong>Viola da Cunha, mezo soprano and friends</strong>
+Date: 13th July (SUN)
+Time: 7:30pm-9:30pm
+Venue: East Finchley Methodist Church
+High Road, East Finchley London N2 8AJ
+Blog Article | ブログ記事
+
+<strong>Bath International Music Festival 2014</strong>
+Date: 16th May (FRI)
+Time: 19:40 – 20:10
+Venue: Holburne Museum, Great Pulteney Street Bath, BA2 4DB
+Blog Article | ブログ記事
+
+<strong>Private Birthday Party</strong>
+Date: 19th April (SAT)
+Time: 7pm (Food served from 8pm)
+Venue: St Antony’s Club 13 Upton Avenue, Forest Gate, London, E7 9PJ
+
+<strong>3rd SOAS Interfaith Music Festival</strong>
+Date: 24 February (MON)
+Time: Approx. 11:15am-11:45am (The event starts at 11:00am, ends around 9:00pm)
+Venue: SOAS (Brunel Gallery Lecture Theater)
+Blog Article | ブログ記事
+
+<strong>Past Concerts in 2013</strong>
+
+<strong>Viola da Cunha, mezzo soprano and Pocket Penguin</strong>
+Date: 9th December (MON)
+Time: 2:30pm-3:15pm
+Venue: St Pauls Centre,102A Church St, Enfield EN2 6AR
+Blog Article | ブログ記事
+
+<strong>Music Picnic (ensemble version)</strong>
+Date:1st December (SUN)
+Time: 3pm – 5pm
+Venue: Holy Trinity Church 91 Church Lane, East Finchley N2 0TH
+Blog Article | ブログ記事
+
+<strong>Viola da Cunha, mezzo soprano and friends 2</strong>
+Date: 9th November(SAT)
+Time: 7:30pm-9:30pm
+Venue: Christ Church, Southgate
+The Green, Southgate, N14 7EG
+Blog Article | ブログ記事
+
+<strong>Viola da Cunha, mezo soprano and friends 1</strong>
+Date: 8th September (SUN)
+Time: 7:30pm-9:30pm
+Venue: East Finchley Methodist Church
+High Road, East Finchley London N2 8AJ
+Blog Article | ブログ記事
+
+<strong>Kitchen Party 2013</strong>
+Date: 14th July (SUN)
+Time: 6:00pm – 9:00pm
+Venue: Jacksons Lane Theatre Studio 4
+269a Archway Road, London N6 5AA
+Admission: £2
+Blog Article | ブログ記事
+
+<strong>Music Picnic 2013</strong>
+Date:14th July (SUN)
+Time:1pm – 4pm
+Venue: Holy Trinity Church 91 Church Lane, East Finchley N2 0TH
+Blog Article | ブログ記事
+
+<strong>Melodica & Guitar Concert “Wandering Sound”</strong>
+Date: 21st June (FRI)
+Time: 15:00-17:00
+Venue: PROF. DR. TÜRKAN SAYLAN ALSANCAK CULTURAL CENTER
+Cyprus Martyrs Caddesi No: 12 Alsancak-Izmir K.5, Turkey
+Tel: 0232422 52 36-0232463 43 46
+Admission: 10TL
+Blog Article | ブログ記事
+
+<strong>Private Party</strong>
+Date: 20th June (THU)
+Time: 8:00pm
+Venue: TBA
+
+<strong>Bath International Music Festival</strong>
+Date: 24th May (FRI)
+Time: 6:30pm-8:30pm
+Venue: Victoria Art Gallery
+Bridge Street, Avon, Bath BA2 4AT
+Blog Article | ブログ記事
+
+<strong>Evening Concert</strong>
+Date: 14th April (SUN)
+Time: 7:30pm-9:30pm
+Venue: East Finchley Methodist Church
+High Road, East Finchley London N2 8AJ
+Blog Article | ブログ記事
+
+<strong>Daylight Music</strong>
+Date: 2nd March (SAT)
+Time: from Midday to 1.45pm (TBA)
+Venue: Union Chapel
+Union Chapel, Compton Avenue, London N1 2XD
+Blog Article | ブログ記事
+
+<strong>Past Concerts in 2012</strong>
+
+<strong>Live Show in Nagoya, Japan</strong>
+Date: 18th December (TUE)
+Time: 7:30pm-9:30pm (2 stages)
+Venue: Romanian Resutaurant Sarmale 1-16-28 Aoi, Nagoya, JAPAN 461-0001 TEL:052-935-8877
+Subway: Higashiyama Line Shinsakae Station (2 min walk from exit 2)
+Admission: ￥4000
+Blog Article | ブログ記事
+
+<strong>Lunch Time Concert in Nagoya, Japan</strong>
+Date: 18th December (TUE)
+Time: 11:30am – 12:30pm
+Venue: Munetsugu Hall 4-5-14 Sakae, Naka-ku, Nagoya 460-0008 JAPAN
+Subway: Higashiyama Line Sakae Station (5 min walk from exit 12)
+Admission: ￥1000
+Blog Article | ブログ記事
+
+<strong>Kitchen Party (Christmas Party) 2012</strong>
+Date: 1st December (SAT)
+Time: 6:00pm – 9:00pm
+Venue: St. Mary Church Finchley 26 Hendon Lane Finchley, London N3 1RT
+Admission: £2
+Blog Article | ブログ記事
+
+<strong>A Mini Concert 2012</strong>
+Date: 29th September (SAT)
+Time: 6:00pm – 8:00pm
+Venue: St. Mary Church Finchley 26 Hendon Lane Finchley, London N3 1RT
+
+<strong>Kitchen Party May 2012</strong>
+Date: 20th May (SUN)
+Time: 3:00pm – 7:00pm
+Venue: Annies Bar Annies Bar. 180 Kentish Town Road, London, NW5 2AE
+
+<strong>Evening Concert</strong>
+Date: 15th April (SUN)
+Time: 7:30pm-9:30pm
+Venue: East Finchley Methodist Church
+High Road, East Finchley London N2 8AJ
+
+<strong>Kitchen Party 2012</strong>
+Date: 11th March (SUN)
+Time: 3:00pm – 7:00pm
+Venue: Annies Bar Annies Bar. 180 Kentish Twon Road, London, NW5 2AE
+
+<strong>Live Music</strong>
+Date: 4th March (SUN)
+Time: 2:30pm-3:30pm
+Venue: tobaccofactory Tobacco Factory. Raleigh Rd, Bristol, BS3 1TF TEL:0117 902 0060
+Blog Article | ブログ記事
+
+<strong>This Is The Kit</strong>
+Date: 3rd March (SAT)
+Time: 8pm Venue: Colston Hall 2 Colston Hall 2, Colston St Bristol BS1 5AR
+Blog Article | ブログ記事
+
+<strong>Free Concert in Aichi Medical Hospital, Japan</strong>
+Date: 24th February (FRI)
+Time: 2:30pm-3:30pm
+Venue: Aichi Medical Hospital Aichi Medical University Nagakute, Aichi, 480-1195 TEL:052-935-8877
+
+<strong>Live Show in Nagoya, Japan</strong>
+Date: 24th February (FRI)
+Time: 7:30pm-9:30pm (2 stages)
+Venue: Romanian Resutaurant Sarmale Nagoya-shi, Aoi, 1-16-28 461-0001 Subway: Higashiyama Line Shinsakae Station (2mins walk from exit 2) TEL:052-935-8877
+
+<strong>Live Show in Nagoya, Japan</strong>
+Date: 25th February (SAT)
+Time: 7:30pm-9:30pm (2stages)
+Venue: Il Matino Nagoya-shi, Meito-ku, Akegaoka122, Hato Building 1F101 Subway: Higashiyama Line Fujigaoka Station (1min walk ) TEL: 052-772-3322
+
+<strong>Past Concerts in 2011</strong>
+
+<strong>Kitchen Party 2011</strong>
+Date: 27th Nov (SUN)
+Time: 2pm – 5pm
+Venue: Crane &Tortoise 39-41 Gray’s Inn Road London WC1X 8PR
+
+<strong>Music Picnic 2011</strong>
+Date:17th July (SUN)
+Time:1pm – 4:30pm
+Venue: Holy Trinity Church 91 Church Lane, East Finchley N2 0TH
+
+<strong>Lunchtime Concert</strong>
+Date:10th June (FRI)
+Time1:10pm – 1:50 pm
+Venue: St. John’s, Waterloo Admission Free
+Blog Article | ブログ記事
+
+<strong>Charity Concert “Lend a hand to Japan”</strong>
+Date: 4th June (SAT)
+Doors Open: 19:00 Performance: 19:30 (All proceeds will be donated to the Japan Tsunami Appeal by the Japan Red Cross)
+Venue:St George’s Church Bloomsbury Way WC1A 2HR
+Blog Article | ブログ記事
+
+<strong>Guitar and Piano Concert</strong>
+Date: 7th Apr (THU)
+Time: 1pm – 2pm
+Venue: St. Paul’s Church Covent Garden
+Blog Article | ブログ記事
+        </div>
+    </div>
+</section>
