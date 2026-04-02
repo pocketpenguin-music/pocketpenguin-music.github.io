@@ -11,14 +11,14 @@
         :root {
             --bg-color: #ffffff;
             --text-color: #2d3436;
-            --accent-color: #ff9f43; /* Warm Orange */
-            --sub-color: #2f3640; /* Penguin Black */
+            --accent-color: #ff9f43;
+            --sub-color: #2f3640;
             --light-gray: #f9f9f9;
         }
         body {
             font-family: 'Noto Sans JP', sans-serif;
             margin: 0; padding: 0; color: var(--text-color); line-height: 1.8;
-            background-color: var(--bg-color);
+            scroll-behavior: smooth; /* スムーズにスクロールさせる設定 */
         }
         header {
             background: var(--sub-color); color: white;
@@ -27,50 +27,27 @@
         .logo { font-size: 2.8rem; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 15px; }
         .subtitle { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
         
-        /* Navigation Area */
         .nav-container {
             background: white; position: sticky; top: 0; 
-            border-bottom: 1px solid #eee; z-index: 1000;
-            padding: 10px 0;
+            border-bottom: 1px solid #eee; z-index: 1000; padding: 10px 0;
         }
-        nav {
-            max-width: 1000px; margin: 0 auto;
-            display: flex; flex-wrap: wrap; justify-content: center;
-        }
-        nav a {
-            margin: 5px 15px; text-decoration: none; color: var(--sub-color);
-            font-weight: 500; font-size: 0.9rem; transition: 0.3s;
-        }
+        nav { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
+        nav a { margin: 5px 15px; text-decoration: none; color: var(--sub-color); font-weight: 500; font-size: 0.9rem; }
         nav a:hover { color: var(--accent-color); }
 
-        /* Sections */
-        section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
-        .section-title {
-            text-align: center; margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 1.8rem; border-bottom: 2px solid var(--accent-color);
-            display: inline-block; padding-bottom: 5px;
-        }
+        section { max-width: 900px; margin: 80px auto; padding: 60px 20px 0 20px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 1.8rem; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
 
-        /* Menu Grid (For Discography, Concert, etc.) */
-        .menu-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .menu-item {
-            background: var(--light-gray); padding: 30px; border-radius: 8px;
-            text-align: center; transition: 0.3s;
-        }
-        .menu-item:hover { transform: translateY(-5px); background: #f0f0f0; }
-        .menu-item h3 { margin-top: 0; color: var(--sub-color); }
-        .menu-item p { font-size: 0.85rem; color: #666; }
+        /* Profile Cards */
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .profile-card { background: var(--light-gray); padding: 25px; border-radius: 8px; border-top: 4px solid var(--sub-color); }
+        .profile-card h3 { margin-top: 0; color: var(--sub-color); border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .lang-en { font-style: italic; color: #555; font-size: 0.9rem; margin-bottom: 15px; }
+        .lang-jp { font-size: 0.85rem; color: #333; }
 
         footer { background: var(--sub-color); color: white; text-align: center; padding: 60px 20px; margin-top: 100px; }
-        .contact-btn {
-            display: inline-block; padding: 12px 40px; background: var(--accent-color);
-            color: white; text-decoration: none; border-radius: 30px; font-weight: bold;
-        }
+        .contact-btn { display: inline-block; padding: 12px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -88,45 +65,37 @@
         <a href="#concert">Concert</a>
         <a href="#edition">Edition</a>
         <a href="#store">Store</a>
-        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
     </nav>
 </div>
 
 <section id="about">
     <div class="section-title"><h2>About</h2></div>
-    <p style="text-align:center;">Pocket Penguin is an instrumental duo run by Ayumi Toyama & Ryusuke Koarashi.</p>
-    <p>ここに詳細なプロフィール文が入ります。メロディカとギターの出会いや、音楽のコンセプトについて教えていただければ追記します。</p>
-</section>
+    
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+        <p style="font-style: italic; color: #555;">Pocket Penguin is an instrumental duo established by Ayumi Toyama and Ryusuke Koarashi in 2011. They explore the possibilities of melodica and guitar, performing music from all over the world.</p>
+        <p style="font-size: 0.95rem;">Pocket Penguin（ポケットペンギン）は、遠山麻友美と小嵐龍輔によるデュオです。鍵盤ハーモニカとギターという親密な楽器を組み合わせ、世界中の様々な音楽を独自の解釈で届けています。</p>
+    </div>
 
-<section id="menu-overview">
-    <div class="menu-grid">
-        <div class="menu-item" id="media">
-            <h3>Media</h3>
-            <p>Videos / Audio recordings of our performances.</p>
+    <div class="profile-grid">
+        <div class="profile-card">
+            <h3>Ayumi Toyama <small style="font-weight: normal;">(Melodica / Piano)</small></h3>
+            <div class="lang-en">Born in Nagoya, Japan. A graduate of the University of Colorado, Boulder. She is active as a piano teacher, accompanist and melodica player.</div>
+            <div class="lang-jp">名古屋出身。4歳よりピアノを始める。University of Colorado, Boulder卒。ピアノ指導者、伴奏者としても活動している。</div>
         </div>
-        <div class="menu-item" id="discography">
-            <h3>Discography</h3>
-            <p>Our released albums and creative projects.</p>
-        </div>
-        <div class="menu-item" id="concert">
-            <h3>Concert</h3>
-            <p>Information about upcoming performances and events.</p>
-        </div>
-        <div class="menu-item" id="edition">
-            <h3>Edition</h3>
-            <p>Sheet music and scores for our arrangements.</p>
-        </div>
-        <div class="menu-item" id="store">
-            <h3>Store</h3>
-            <p>Merchandise and hardcopy albums available for purchase.</p>
-        </div>
-        <div class="menu-item" id="blog">
-            <h3>Blog</h3>
-            <p>Personal insights and updates (External links).</p>
+        <div class="profile-card">
+            <h3>Ryusuke Koarashi <small style="font-weight: normal;">(Guitar / Comp. / Arr.)</small></h3>
+            <div class="lang-en">Studied at the Guildhall School of Music and Drama in London. He made more than 300 arrangements/compositions for this duo.</div>
+            <div class="lang-jp">ギタリスト、作編曲家。ロンドンのギルドホール音楽院卒。2011〜2013年の間に300曲以上のデュオ用作品を制作。</div>
         </div>
     </div>
 </section>
+
+<section id="media"><div class="section-title"><h2>Media</h2></div><p style="text-align:center;">Coming Soon...</p></section>
+<section id="discography"><div class="section-title"><h2>Discography</h2></div><p style="text-align:center;">Coming Soon...</p></section>
+<section id="concert"><div class="section-title"><h2>Concert</h2></div><p style="text-align:center;">Coming Soon...</p></section>
+<section id="edition"><div class="section-title"><h2>Edition</h2></div><p style="text-align:center;">Coming Soon...</p></section>
+<section id="store"><div class="section-title"><h2>Store</h2></div><p style="text-align:center;">Coming Soon...</p></section>
 
 <section id="contact" style="text-align: center;">
     <div class="section-title"><h2>Contact</h2></div>
