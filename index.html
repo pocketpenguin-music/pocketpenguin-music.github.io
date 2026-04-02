@@ -10,77 +10,133 @@
     <style>
         :root {
             --bg-color: #ffffff;
-            --text-color: #333333;
-            --accent-color: #ff9f43; /* 暖かなオレンジ */
-            --sub-color: #2f3640; /* ペンギンブラック */
+            --text-color: #2d3436;
+            --accent-color: #ff9f43; /* Warm Orange */
+            --sub-color: #2f3640; /* Penguin Black */
+            --light-gray: #f9f9f9;
         }
         body {
             font-family: 'Noto Sans JP', sans-serif;
             margin: 0; padding: 0; color: var(--text-color); line-height: 1.8;
+            background-color: var(--bg-color);
         }
         header {
             background: var(--sub-color); color: white;
-            padding: 100px 20px; text-align: center;
+            padding: 120px 20px; text-align: center;
         }
-        .logo { font-size: 2.5rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 10px; }
-        .subtitle { font-size: 1.1rem; opacity: 0.8; }
+        .logo { font-size: 2.8rem; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 15px; }
+        .subtitle { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+        
+        /* Navigation Area */
+        .nav-container {
+            background: white; position: sticky; top: 0; 
+            border-bottom: 1px solid #eee; z-index: 1000;
+            padding: 10px 0;
+        }
         nav {
-            background: #f8f9fa; padding: 15px;
-            position: sticky; top: 0; text-align: center; border-bottom: 1px solid #eee;
+            max-width: 1000px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; justify-content: center;
         }
-        nav a { margin: 0 15px; text-decoration: none; color: var(--sub-color); font-weight: 500; }
-        section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-        h2 { border-bottom: 3px solid var(--accent-color); display: inline-block; margin-bottom: 30px; }
-        .video-container {
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-            margin-bottom: 30px; background: #eee;
+        nav a {
+            margin: 5px 15px; text-decoration: none; color: var(--sub-color);
+            font-weight: 500; font-size: 0.9rem; transition: 0.3s;
         }
-        .video-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        nav a:hover { color: var(--accent-color); }
+
+        /* Sections */
+        section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+        .section-title {
+            text-align: center; margin-bottom: 50px;
         }
-        footer { background: #f8f9fa; text-align: center; padding: 40px; font-size: 0.9rem; }
+        .section-title h2 {
+            font-size: 1.8rem; border-bottom: 2px solid var(--accent-color);
+            display: inline-block; padding-bottom: 5px;
+        }
+
+        /* Menu Grid (For Discography, Concert, etc.) */
+        .menu-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background: var(--light-gray); padding: 30px; border-radius: 8px;
+            text-align: center; transition: 0.3s;
+        }
+        .menu-item:hover { transform: translateY(-5px); background: #f0f0f0; }
+        .menu-item h3 { margin-top: 0; color: var(--sub-color); }
+        .menu-item p { font-size: 0.85rem; color: #666; }
+
+        footer { background: var(--sub-color); color: white; text-align: center; padding: 60px 20px; margin-top: 100px; }
         .contact-btn {
-            display: inline-block; padding: 12px 30px; background: var(--accent-color);
-            color: white; text-decoration: none; border-radius: 25px; transition: 0.3s;
+            display: inline-block; padding: 12px 40px; background: var(--accent-color);
+            color: white; text-decoration: none; border-radius: 30px; font-weight: bold;
         }
-        .contact-btn:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">Pocket Penguin</div>
-    <div class="subtitle">Melodica & Guitar Duo</div>
+    <p class="subtitle">An instrumental duo run by Ayumi Toyama & Ryusuke Koarashi.</p>
 </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#videos">Videos</a>
-    <a href="#contact">Contact</a>
-</nav>
+<div class="nav-container">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#media">Media</a>
+        <a href="#discography">Discography</a>
+        <a href="#concert">Concert</a>
+        <a href="#edition">Edition</a>
+        <a href="#store">Store</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</div>
 
 <section id="about">
-    <h2>About</h2>
-    <p>メロディカ（鍵盤ハーモニカ）とアコースティックギターによるデュオ、Pocket Penguin（ポケットペンギン）です。</p>
-    <p>どこか懐かしく、温かい音色を大切に、日々の生活にそっと寄り添うような音楽を届けています。</p>
+    <div class="section-title"><h2>About</h2></div>
+    <p style="text-align:center;">Pocket Penguin is an instrumental duo run by Ayumi Toyama & Ryusuke Koarashi.</p>
+    <p>ここに詳細なプロフィール文が入ります。メロディカとギターの出会いや、音楽のコンセプトについて教えていただければ追記します。</p>
 </section>
 
-<section id="videos">
-    <h2>Videos</h2>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<section id="menu-overview">
+    <div class="menu-grid">
+        <div class="menu-item" id="media">
+            <h3>Media</h3>
+            <p>Videos / Audio recordings of our performances.</p>
+        </div>
+        <div class="menu-item" id="discography">
+            <h3>Discography</h3>
+            <p>Our released albums and creative projects.</p>
+        </div>
+        <div class="menu-item" id="concert">
+            <h3>Concert</h3>
+            <p>Information about upcoming performances and events.</p>
+        </div>
+        <div class="menu-item" id="edition">
+            <h3>Edition</h3>
+            <p>Sheet music and scores for our arrangements.</p>
+        </div>
+        <div class="menu-item" id="store">
+            <h3>Store</h3>
+            <p>Merchandise and hardcopy albums available for purchase.</p>
+        </div>
+        <div class="menu-item" id="blog">
+            <h3>Blog</h3>
+            <p>Personal insights and updates (External links).</p>
+        </div>
     </div>
-    <p style="text-align:center;">最新の演奏動画を順次公開しています。</p>
 </section>
 
 <section id="contact" style="text-align: center;">
-    <h2>Contact</h2>
-    <p>演奏依頼やお問い合わせはこちらからどうぞ。</p>
-    <a href="mailto:your-email@example.com" class="contact-btn">メールを送る</a>
+    <div class="section-title"><h2>Contact</h2></div>
+    <p>Messages / Comments are always welcome.</p>
+    <br>
+    <a href="mailto:your-email@example.com" class="contact-btn">Send Message</a>
 </section>
 
 <footer>
-    <p>&copy; 2026 Pocket Penguin</p>
+    <p>&copy; 2026 Pocket Penguin | Ayumi Toyama & Ryusuke Koarashi</p>
 </footer>
 
 </body>
