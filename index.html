@@ -1,3 +1,11 @@
+申し訳ありません！詰め込みすぎて、大切なリスト（RepertoireやConcertの詳細）を省略してしまいましたね。
+「全体のコード」と言いつつ、コードの長さを優先して中身を削ってしまうのは私の悪い癖でした。
+
+今回は、あなたが提示してくださった**すべてのレパートリーリスト**と**すべての過去の演奏会記録**を**一字一句もらさず**、新しい`Edition`セクションと統合した「完全な1ファイル」を作成しました。
+
+これをコピーすれば、もう何も消えていないはずです。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -44,6 +52,14 @@
         .profile-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .profile-item h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; color: var(--sub-color); }
         
+        /* Edition List Design */
+        .edition-list { list-style: none; padding: 0; }
+        .edition-list li { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eee; }
+        .work-title { font-weight: 700; font-size: 1.1rem; }
+        .work-details { display: block; font-size: 0.85rem; color: #666; margin-top: 5px; }
+        .ex-link { font-size: 0.8rem; color: #0066cc; text-decoration: none; font-weight: bold; margin-left: 10px; }
+        .ex-link:hover { text-decoration: underline; }
+
         footer { background: var(--sub-color); color: white; text-align: center; padding: 40px 20px; margin-top: 80px; }
         .contact-btn { display: inline-block; padding: 12px 40px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; }
     </style>
@@ -70,14 +86,9 @@
 
 <section id="about">
     <div class="section-title"><h2>About</h2></div>
-    
     <div class="bio-block">
-        <div class="bio-text" style="font-style: italic; color: #555; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-            Pocket Penguin is an instrumental duo established by Ayumi Toyama and Ryusuke Koarashi in 2011. Pocket Penguin has been mainly focusing on exploring possibility of combination of two intimate instruments—melodica & guitar—by both composing and adapting various music from all over the world. They have had performances in UK, Japan, Italy, Azerbaijan, and Turkey until now. The 1st album “A Bird Flying over Mountains” was released in March 2012, and the 2nd album “Prelude” was released in May 2013. They founded London melodica ensemble in 2013 and have been developing a number of repertoire for the ensemble.
-        </div>
-        <div class="bio-text" style="padding-top: 10px;">
-            Pocket Penguin (ポケットペンギン) とは、遠山麻友美と小嵐龍輔の２人で、ロンドンを拠点に活動しているインストゥルメンタルデュオです。鍵盤ハーモニカとギターという組み合わせで現代世界の様々な音楽を取り上げると同時に、過去の作品の異なった解釈の可能性を探求します。現在までに、イギリスをはじめ、日本、アゼルバイジャン、トルコ等で演奏しました。2012年にファーストアルバム、”A Bird Flying over Mountains“が、2013年にセカンドアルバム”Prelude“がリリースされています。
-        </div>
+        <div class="bio-text" style="font-style: italic; color: #555; border-bottom: 1px solid #eee; padding-bottom: 30px;">Pocket Penguin is an instrumental duo established by Ayumi Toyama and Ryusuke Koarashi in 2011. Pocket Penguin has been mainly focusing on exploring possibility of combination of two intimate instruments—melodica & guitar—by both composing and adapting various music from all over the world. They have had performances in UK, Japan, Italy, Azerbaijan, and Turkey until now. The 1st album “A Bird Flying over Mountains” was released in March 2012, and the 2nd album “Prelude” was released in May 2013. They founded London melodica ensemble in 2013 and have been developing a number of repertoire for the ensemble.</div>
+        <div class="bio-text" style="padding-top: 10px;">Pocket Penguin (ポケットペンギン) とは、遠山麻友美と小嵐龍輔の２人で、ロンドンを拠点に活動しているインストゥルメンタルデュオです。鍵盤ハーモニカとギターという組み合わせで現代世界の様々な音楽を取り上げると同時に、過去の作品の異なった解釈の可能性を探求します。現在までに、イギリスをはじめ、日本、アゼルバイジャン、トルコ等で演奏しました。2012年にファーストアルバム、”A Bird Flying over Mountains“が、2013年にセカンドアルバム”Prelude“がリリースされています。</div>
     </div>
 
     <div class="section-title"><h3>Profile</h3></div>
@@ -102,193 +113,69 @@
 
 <section id="repertoire">
     <div class="section-title"><h2>Repertoire</h2></div>
-    
     <div class="repertoire-content" style="max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.6; text-align: left; background: #fff; padding: 20px; border: 1px solid #eee;">
         <p style="margin-bottom: 20px;">—the list of repertoires that we have played in public.</p>
-
         <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px;">Melodica + Guitar</h3>
-        
         <p><strong>Amirov, Fikret</strong><br>Two pieces on Azerbaijan Folk Themes</p>
-        
-        <p><strong>Bach, J.S.</strong><br>Cello Suite III<br>
-        -Prelude<br>
-        -Allemande<br>
-        -Courante<br>
-        -Sarabande<br>
-        -Bourré<br>
-        -Gigue<br>
-        Jesus Bleibet Meine Freude (from BWV147)</p>
-        
-        <p><strong>Bartok, Bela</strong><br>Three Hungarian Folksongs from Csik<br>
-        Rumanian Folk Dances<br>
-        Romanian Christmas Carols Series I<br>
-        Romanian Christmas Carols Series II<br>
-        Sonatina on Themes from Transylvania</p>
-        
+        <p><strong>Bach, J.S.</strong><br>Cello Suite III<br>-Prelude<br>-Allemande<br>-Courante<br>-Sarabande<br>-Bourré<br>-Gigue<br>Jesus Bleibet Meine Freude (from BWV147)</p>
+        <p><strong>Bartok, Bela</strong><br>Three Hungarian Folksongs from Csik<br>Rumanian Folk Dances<br>Romanian Christmas Carols Series I<br>Romanian Christmas Carols Series II<br>Sonatina on Themes from Transylvania</p>
         <p><strong>Bulgarian Folk Dance</strong><br>Kopanitsa</p>
-        
-        <p><strong>Bulgarian Folk Songs</strong><br>A Bre Bati Kolyo<br>
-        Bre Petrunko<br>Dilmano, Dilbero<br>
-        Dragana y Slaveya<br>
-        Polegnala e Todora<br>
-        Radi na Radka Dumashe<br>
-        Vecheryai Rado<br>
-        Vido, Vido, Byala Vido</p>
-        
-        <p><strong>Catalan Folk Song</strong><br>El Noy De La Mare<br>
-        La Nit De Nadal<br>
-        La Filadora</p>
-        
+        <p><strong>Bulgarian Folk Songs</strong><br>A Bre Bati Kolyo<br>Bre Petrunko<br>Dilmano, Dilbero<br>Dragana y Slaveya<br>Polegnala e Todora<br>Radi na Radka Dumashe<br>Vecheryai Rado<br>Vido, Vido, Byala Vido</p>
+        <p><strong>Catalan Folk Song</strong><br>El Noy De La Mare<br>La Nit De Nadal<br>La Filadora</p>
         <p><strong>Debussy, Claude</strong><br>La fille aux cheveux de lin</p>
-        
-        <p><strong>Dowland, John</strong><br>A Piece without Title<br>
-        Forlorn Hope Fancy<br>
-        The Frog Galliard</p>
-        
-        <p><strong>English Christmas Carol</strong><br>The First Nöel<br>
-        We Wish You A Merry Christmas</p>
-        
+        <p><strong>Dowland, John</strong><br>A Piece without Title<br>Forlorn Hope Fancy<br>The Frog Galliard</p>
+        <p><strong>English Christmas Carol</strong><br>The First Nöel<br>We Wish You A Merry Christmas</p>
         <p><strong>Folk Song</strong><br>Sari Gelin</p>
-        
         <p><strong>Hajibeyov, Niyazi</strong><br>Music fragments from the film “Almas”</p>
-        
         <p><strong>Hajibeyov, Uzeyir</strong><br>Jangi</p>
-        
         <p><strong>Handel, Frederic George</strong><br>Ombra Mai Fu</p>
-        
-        <p><strong>Irish Traditional</strong><br>Medley (The Road to Lisdoonvarna, The Swallowtail Jig and The Swallowtail Reel)<br>
-        Londonderry Air</p>
-        
-        <p><strong>Khachaturian, Aram</strong><br>(From Children’s Album)<br>
-        A Little Song<br>
-        Scherzo<br>
-        Skipping Rope<br>
-        Eastern Dance<br>
-        Two Funny Aunties Argued<br>
-        My Friend is Unwell</p>
-        
-        <p><strong>Kreisler, Friz</strong><br>Liebesleid<br>
-        Liebesfreud<br>
-        Schön Rosmarin</p>
-        
-        <p><strong>Mirzaev, Musa</strong><br>6 pieces on material of Azerbaijan Folklore<br>
-        1.Lyrical Piece<br>
-        2.First Dance<br>
-        3.Second Dance<br>
-        4.Third Dance<br>
-        5.Fourth Dance<br>
-        6.Fifth Dance</p>
-        
+        <p><strong>Irish Traditional</strong><br>Medley (The Road to Lisdoonvarna, The Swallowtail Jig and The Swallowtail Reel)<br>Londonderry Air</p>
+        <p><strong>Khachaturian, Aram</strong><br>(From Children’s Album)<br>A Little Song<br>Scherzo<br>Skipping Rope<br>Eastern Dance<br>Two Funny Aunties Argued<br>My Friend is Unwell</p>
+        <p><strong>Kreisler, Friz</strong><br>Liebesleid<br>Liebesfreud<br>Schön Rosmarin</p>
+        <p><strong>Mirzaev, Musa</strong><br>6 pieces on material of Azerbaijan Folklore<br>1.Lyrical Piece<br>2.First Dance<br>3.Second Dance<br>4.Third Dance<br>5.Fourth Dance<br>6.Fifth Dance</p>
         <p><strong>Miyagi, Michio</strong><br>Haru no Umi</p>
-        
         <p><strong>Mompou, Federico</strong><br>Cancion y Danza VIII</p>
-        
         <p><strong>Monti, Vittorio</strong><br>Csárdás</p>
-        
         <p><strong>Morricone, Ennio & Andrea</strong><br>Cinema Paradiso Medley</p>
-        
         <p><strong>Mozart, W.A.</strong><br>Piano Sonata in A, K331</p>
-        
         <p><strong>Polish Dance</strong><br>Clarinet Polka</p>
-        
-        <p><strong>Qarayev, Qara</strong><br>Prelude 2<br>
-        Eskiz</p>
-        
-        <p><strong>Saygun, Ahmet Adnan</strong><br>Inci’nin Kitabı (inci’s book)<br>
-        1.Inci<br>
-        2.Afcan Kedi<br>
-        3.Masal<br>
-        4.Kocaman Bebek<br>
-        5.Oyun<br>
-        6.Ninni<br>
-        7.Rüya</p>
-        
-        <p><strong>Satie, Erik</strong><br>Sonatine Breucratique<br>
-        Cinema</p>
-        
+        <p><strong>Qarayev, Qara</strong><br>Prelude 2<br>Eskiz</p>
+        <p><strong>Saygun, Ahmet Adnan</strong><br>Inci’nin Kitabı (inci’s book)<br>1.Inci<br>2.Afcan Kedi<br>3.Masal<br>4.Kocaman Bebek<br>5.Oyun<br>6.Ninni<br>7.Rüya</p>
+        <p><strong>Satie, Erik</strong><br>Sonatine Breucratique<br>Cinema</p>
         <p><strong>Sor, Fernando</strong><br>Souvenir de Russie</p>
-        
-        <p><strong>Şatıroğlu, Veysel (Aşık Veysel)</strong><br>Kara Toprak<br>
-        Uzun Ince Bir Yordayım</p>
-        
-        <p><strong>Koarashi, Ryusuke</strong><br>A Bird Flying over Mountains<br>
-        Crippled Jig<br>
-        Çok Güzeller<br>
-        Foreign Hill<br>
-        Fragments of Dreams<br>
-        Walking through a Forest</p>
-        
-        <p><strong>Koarashi & Toyama</strong><br>Prelude I<br>
-        Prelude II<br>
-        Prelude III<br>
-        Prelude IV<br>
-        Prelude V</p>
-        
+        <p><strong>Şatıroğlu, Veysel (Aşık Veysel)</strong><br>Kara Toprak<br>Uzun Ince Bir Yordayım</p>
+        <p><strong>Koarashi, Ryusuke</strong><br>A Bird Flying over Mountains<br>Crippled Jig<br>Çok Güzeller<br>Foreign Hill<br>Fragments of Dreams<br>Walking through a Forest</p>
+        <p><strong>Koarashi & Toyama</strong><br>Prelude I<br>Prelude II<br>Prelude III<br>Prelude IV<br>Prelude V</p>
         <p><strong>Webern, Anton</strong><br>Kinderstück</p>
-        
         <p><strong>Yatsuhashi, Kengyo</strong><br>Rokudan no Shirabe</p>
 
         <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px;">Piano + Guitar</h3>
-        
-        <p><strong>Carulli, Ferdinando/Gustavo</strong><br>Duo in D major op.134<br>
-        Duo in G major op.151</p>
-        
+        <p><strong>Carulli, Ferdinando/Gustavo</strong><br>Duo in D major op.134<br>Duo in G major op.151</p>
         <p><strong>Castelnuovo-Tedesco, Mario</strong><br>Guitar Concierto in D, op.99</p>
-        
         <p><strong>Fujii, Keigo</strong><br>Variations on the theme of Shabondama</p>
-        
         <p><strong>Koarashi, Ryusuke</strong><br>Hotaru</p>
-        
-        <p><strong>Molino Francesco</strong><br>Nocturne No.1 op.36<br>
-        Nocturne No.2 op.44</p>
-        
+        <p><strong>Molino Francesco</strong><br>Nocturne No.1 op.36<br>Nocturne No.2 op.44</p>
         <p><strong>Stevens, Bernard</strong><br>Autumn Sequence</p>
 
         <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px;">Voice + Melodica + Guitar</h3>
-        
-        <p><strong>Dowland, John</strong><br>Come Again<br>
-        Fine Knacks for Ladies</p>
-        
-        <p><strong>Gershwin, George</strong><br>Foggy Day<br>
-        I Got a Rhythm<br>
-        Summertime</p>
-        
-        <p><strong>Granados, Enrique</strong><br>El Majo Timido<br>
-        El Mirar de la Maja<br>
-        Amor y Odio<br>
-        El Majo Discreto</p>
-        
-        <p><strong>Falla, Manuel de</strong><br>7 Canciones populares Españolas<br>
-        El paño moruno<br>
-        Seguidilla murciana<br>
-        Asturiana<br>
-        Jota<br>
-        Nana<br>
-        Canción<br>
-        Polo</p>
-        
+        <p><strong>Dowland, John</strong><br>Come Again<br>Fine Knacks for Ladies</p>
+        <p><strong>Gershwin, George</strong><br>Foggy Day<br>I Got a Rhythm<br>Summertime</p>
+        <p><strong>Granados, Enrique</strong><br>El Majo Timido<br>El Mirar de la Maja<br>Amor y Odio<br>El Majo Discreto</p>
+        <p><strong>Falla, Manuel de</strong><br>7 Canciones populares Españolas<br>El paño moruno<br>Seguidilla murciana<br>Asturiana<br>Jota<br>Nana<br>Canción<br>Polo</p>
         <p><strong>Rodrigo, Joaquin</strong><br>De los alamos vengo, madre</p>
-        
         <p><strong>Scarlatti, Alessandro</strong><br>Se Florindo e Fedele</p>
-        
         <p><strong>Stravinsky, Igor</strong><br>Pastrale</p>
-        
-        <p><strong>Montsalvatge, Xavier</strong><br>Cuba on a Keyboard<br>
-        Punto De Habanera</p>
+        <p><strong>Montsalvatge, Xavier</strong><br>Cuba on a Keyboard<br>Punto De Habanera</p>
     </div>
 </section>
 
 <section id="concert">
     <div class="section-title"><h2>Concert</h2></div>
-    
     <div class="concert-full-archive" style="max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; text-align: left;">
-        
-        <div style="white-space: pre-wrap; background: #fff; padding: 20px; border: 1px solid #eee;">
-Past Concerts
+        <div style="white-space: pre-wrap; background: #fff; padding: 20px; border: 1px solid #eee;">Past Concerts
 <a href="#year-2019">2019</a> | <a href="#year-2017">2017</a> | <a href="#year-2016">2016</a> | <a href="#year-2015">2015</a> | <a href="#year-2014">2014</a> | <a href="#year-2013">2013</a> | <a href="#year-2012">2012</a> | <a href="#year-2011">2011</a>
 
 <strong id="year-2019">Past Concerts in 2019</strong>
-
 <strong>Music for A While</strong>
 Date: 12th May (Sun）
 Time: 19:30-21.15
@@ -311,7 +198,6 @@ Hendon Lane, London N3 1TR
 <a href="http://blog.pocketpenguin.net/2019/02/11/pocket-penguins-concert-9th-feb-2019/" target="_blank">Blog Article</a> | <a href="http://ja.pocketpenguin.net/2019/02/11/pocket-penguins-concert-9th-feb-2019/" target="_blank">ブログ記事</a>
 
 <strong id="year-2017">Past Concerts in 2017</strong>
-
 <strong>Melodica Club Concert</strong>
 Date: 13th Aug (Sun)
 Time: 2:00pm-
@@ -319,7 +205,6 @@ Venue: Hawraman Café Bar
 38 Chalk Farm Road NW1 8AJ
 
 <strong id="year-2016">Past Concerts in 2016</strong>
-
 <strong>Sunday Afternoon Concert (by Melodica Club)</strong>
 Date: 30th Oct (SUN)
 Time: 3pm-
@@ -332,14 +217,13 @@ Time: 7pm (Food served from 8pm)
 Venue: St Antony’s Club
 13 Upton Avenue, Forest Gate,
 
-            <strong>Sunday Afternoon Concert (by Melodica Club)</strong>
+<strong>Sunday Afternoon Concert (by Melodica Club)</strong>
 Date: 12th JUN (SUN)
 Time: 15:30-16:30
 Venue: Emporium Tea Room
 818 High Road London, N12 9QY
 
 <strong>Past Concerts in 2015</strong>
-
 <strong>Melodica Club Concert</strong>
 Date: 17th May (Sun)
 Time: 2:00pm-4:00pm
@@ -347,7 +231,6 @@ Venue: Holy Trinity East Finchley Church
 77 Church Ln, London N2 0TH
 
 <strong>Past Concerts in 2014</strong>
-
 <strong>Allobu Christmas Concert</strong>
 Date: 23rd Dec (Tue)
 Time: 2:00pm-4:00pm
@@ -392,7 +275,6 @@ Venue: SOAS (Brunel Gallery Lecture Theater)
 Blog Article | ブログ記事
 
 <strong>Past Concerts in 2013</strong>
-
 <strong>Viola da Cunha, mezzo soprano and Pocket Penguin</strong>
 Date: 9th December (MON)
 Time: 2:30pm-3:15pm
@@ -469,7 +351,6 @@ Union Chapel, Compton Avenue, London N1 2XD
 Blog Article | ブログ記事
 
 <strong>Past Concerts in 2012</strong>
-
 <strong>Live Show in Nagoya, Japan</strong>
 Date: 18th December (TUE)
 Time: 7:30pm-9:30pm (2 stages)
@@ -541,7 +422,6 @@ Time: 7:30pm-9:30pm (2stages)
 Venue: Il Matino Nagoya-shi, Meito-ku, Akegaoka122, Hato Building 1F101 Subway: Higashiyama Line Fujigaoka Station (1min walk ) TEL: 052-772-3322
 
 <strong>Past Concerts in 2011</strong>
-
 <strong>Kitchen Party 2011</strong>
 Date: 27th Nov (SUN)
 Time: 2pm – 5pm
@@ -568,7 +448,65 @@ Blog Article | ブログ記事
 Date: 7th Apr (THU)
 Time: 1pm – 2pm
 Venue: St. Paul’s Church Covent Garden
-Blog Article | ブログ記事
-        </div>
+Blog Article | ブログ記事</div>
     </div>
 </section>
+
+<section id="edition">
+    <div class="section-title"><h2>Edition</h2></div>
+    <div class="edition-content" style="background: var(--light-gray); padding: 30px; border-radius: 8px;">
+        <h3 style="margin-top: 0;">Melodica & Guitar</h3>
+        <ul class="edition-list">
+            <li>
+                <span class="work-title">First Noel</span> <a href="https://gumroad.com/l/firstnoel" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Traditional English Carol / Arr. Ryusuke Koarashi</span>
+            </li>
+            <li>
+                <span class="work-title">Amachan Opening Theme</span> <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14112" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Composed by Yoshihide Otomo / Arr. Ryusuke Koarashi</span>
+            </li>
+            <li>
+                <span class="work-title">Oshin Opening Theme</span> <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14111" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Composed by Koichi Sakata / Arr. Ryusuke Koarashi</span>
+            </li>
+            <li>
+                <span class="work-title">We Wish You a Merry Christmas</span> <a href="http://www.dojinongaku.com/contents/goods_detail.php?goid=14110" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Arr. Ryusuke Koarashi</span>
+            </li>
+        </ul>
+        
+        <h3>Melodica Ensemble</h3>
+        <ul class="edition-list">
+            <li>
+                <span class="work-title">Carol of the Bells / Shchedryk</span> <a href="https://gumroad.com/l/carolofthebells" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Composed by Mykola Leontovych / Transc. Ryusuke Koarashi</span>
+            </li>
+            <li>
+                <span class="work-title">The Merry-Go-Round-of-Life</span> <a href="https://gumroad.com/l/merrygoround" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Theme Song from ‘Howl’s Moving Castle’<br>Composed by Joe Hisaishi / Arr. Ryusuke Koarashi</span>
+            </li>
+            <li>
+                <span class="work-title">Carrying You</span> <a href="https://gumroad.com/l/carryingyou" class="ex-link" target="_blank" rel="noopener">(ex-link)</a><br>
+                <span class="work-details">Theme Song from ‘Castle in the Sky’<br>Composed by Joe Hisaishi / Arr. Ryusuke Koarashi</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="store"><div class="section-title"><h2>Store</h2></div><p style="text-align:center;">Coming Soon</p></section>
+
+<section id="contact">
+    <div class="section-title"><h2>Contact</h2></div>
+    <div style="text-align:center;">
+        <p>For any inquiries, please contact us.</p>
+        <a href="mailto:info@pocketpenguin.net" class="contact-btn">Email Us</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; Pocket Penguin - Ayumi Toyama & Ryusuke Koarashi</p>
+</footer>
+
+</body>
+</html>
+```
